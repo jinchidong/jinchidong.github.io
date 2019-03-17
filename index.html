@@ -91,7 +91,7 @@
             
             <i class="fa fa-user-circle-o"></i>
             
-            <span>关于我</span>
+            <span>关于</span>
         </a>
     </li>
     
@@ -100,7 +100,7 @@
             
             <i class="fa fa-address-book"></i>
             
-            <span>联系</span>
+            <span>友情链接</span>
         </a>
     </li>
     
@@ -171,7 +171,7 @@
                 
                 <i class="fa fa-fw fa-user-circle-o"></i>
                 
-                关于我
+                关于
             </a>
         </li>
         
@@ -180,7 +180,7 @@
                 
                 <i class="fa fa-fw fa-address-book"></i>
                 
-                联系
+                友情链接
             </a>
         </li>
         
@@ -355,6 +355,41 @@ $('.bg-cover').css('background-image', 'url(/medias/banner/' + new Date().getDay
 </div>
                     
 
+                    
+                        
+
+<link rel="stylesheet" href="/libs/aplayer/APlayer.min.css">
+<div class="music-player">
+    
+    <div class="title center-align">
+        <i class="fa fa-music"></i>&nbsp;&nbsp;听听音乐
+    </div>
+    
+    <div class="row">
+        <div class="col l8 offset-l2 m10 offset-m1 s12">
+            <div id="aplayer" class="music"></div>
+        </div>
+    </div>
+</div>
+
+<script src="/libs/aplayer/APlayer.min.js"></script>
+<script>
+$(function () {
+    new APlayer({
+        container: document.getElementById('aplayer'),
+        fixed: 'true' === 'true',
+        autoplay: 'true' === 'true',
+        theme: '#42b983',
+        loop: 'all',
+        order: 'list',
+        preload: 'auto',
+        volume: Number('0.7'),
+        listFolded: 'false' === 'true',
+        listMaxHeight: '',
+        audio: JSON.parse('[{"name":"我最爱的人","artist":"AnimeVibe","url":"我最爱的人","cover":"我最爱的人"}]')
+    });
+});
+</script>
                     
 
                     
