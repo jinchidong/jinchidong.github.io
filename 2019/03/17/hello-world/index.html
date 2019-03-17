@@ -4,8 +4,10 @@
 
 <head><meta name="generator" content="Hexo 3.8.0">
     <meta charset="utf-8">
-    <meta name="keywords" content="大家好，我叫金驰东, Hexo">
-    <meta name="description" content="Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hex">
+    <meta name="keywords" content="UNITY框架, Hexo">
+    <meta name="description" content="基于消息机制的unity框架代码结构
+定义StartPanel(开始界面)，LoginPanel(登录界面)，RegisterPanel(注册界面)
+Framework文件夹:包含了框架所包含的工具类。UI文件夹：项目的界面操作文件。上代码">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -13,7 +15,7 @@
     <meta name="format-detection" content="telephone=no">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <title>大家好，我叫金驰东 | Hexo</title>
+    <title>UNITY框架 | Hexo</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/font-awesome.min.css">
@@ -275,13 +277,13 @@
 
 
 
-<div class="bg-cover post-cover" style="background-image: url('/medias/featureimages/19.jpg')">
+<div class="bg-cover post-cover" style="background-image: url('/medias/featureimages/13.jpg')">
     <div class="container">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
                     <div class="description center-align post-title">
-                        大家好，我叫金驰东
+                        UNITY框架
                     </div>
                 </div>
             </div>
@@ -391,14 +393,14 @@
                     
                     <div class="info-break-policy">
                         <i class="fa fa-file-word-o fa-fw"></i>Word Count:&nbsp;&nbsp;
-                        76
+                        1.4k
                     </div>
                     
 
                     
                     <div class="info-break-policy">
                         <i class="fa fa-clock-o fa-fw"></i>Read Times:&nbsp;&nbsp;
-                        1 Min
+                        6 Min
                     </div>
                     
                 
@@ -414,15 +416,236 @@
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p>
-<h2 id="金驰东"><a href="#金驰东" class="headerlink" title="金驰东"></a>金驰东</h2><h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="noopener">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="noopener">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="noopener">Deployment</a></p>
+                <h2 id="基于消息机制的unity框架"><a href="#基于消息机制的unity框架" class="headerlink" title="基于消息机制的unity框架"></a>基于消息机制的unity框架</h2><p>代码结构</p>
+<p>定义StartPanel(开始界面)，LoginPanel(登录界面)，RegisterPanel(注册界面)</p>
+<p>Framework文件夹:包含了框架所包含的工具类。UI文件夹：项目的界面操作文件。<br>上代码：</p>
+<pre><code>void Awake() {
+        //注册绑定事件。
+        Bind(UIEvent.BEGIN_PANEL_ACTIVE);
+
+    }
+</code></pre><p>首先LoginPanel:先注册绑定“UIEvent.BEGIN_PANEL_ACTIVE”显示登录界面，</p>
+<pre><code>/// &lt;summary&gt;
+    /// 自身关心的消息集合
+    /// &lt;/summary&gt;
+    private List&lt;int&gt; list = new List&lt;int&gt;();
+
+    /// &lt;summary&gt;
+    /// 绑定一个或多个消息
+    /// &lt;/summary&gt;
+    /// &lt;param name=&quot;eventCodes&quot;&gt;Event codes.&lt;/param&gt;
+    /// params int [] eventCodes :可以接收多个参数。
+    protected void Bind(params int[] eventCodes)
+    {
+        list.AddRange(eventCodes);
+        //List.ToArray(); 将集合元素复制到新数组中。
+        UIManager.Instance.Add(list.ToArray(), this);
+    }
+</code></pre><p>Uibase调用Bind方法绑定一个或者多个消息（一个界面代码模块可以绑定多个事件），将事件ID，添加到消息集合中。在上传给Uimanager的Add方法。</p>
+<pre><code>/// &lt;summary&gt;
+/// 添加事件
+/// &lt;/summary&gt;
+/// &lt;param name=&quot;eventCode&quot;&gt;Event code.&lt;/param&gt;
+/// &lt;param name=&quot;mono&quot;&gt;Mono.&lt;/param&gt;
+public void Add(int eventCode, MonoBase mono)
+{
+    List&lt;MonoBase&gt; list = null;
+
+    //之前没有注册过
+    if (!dict.ContainsKey(eventCode))
+    {
+        list = new List&lt;MonoBase&gt;();
+        list.Add(mono);
+        dict.Add(eventCode, list);
+        return;
+    }
+
+    //之前注册过
+    list = dict[eventCode];
+    list.Add(mono);
+}
+
+/// &lt;summary&gt;
+/// 添加多个事件
+///     一个脚本关心多个事件
+/// &lt;/summary&gt;
+/// &lt;param name=&quot;eventCode&quot;&gt;Event code.&lt;/param&gt;
+public void Add(int[] eventCodes, MonoBase mono)
+{
+    for (int i = 0; i &lt; eventCodes.Length; i++)
+    {
+        Add(eventCodes[i], mono);
+    }
+}
+</code></pre><p>Add方法依次对该脚本所关注的所有事件进行注册（一个脚本模块可以关注多个事件），</p>
+<p>接受响应</p>
+<pre><code>public class StartPanel : UIBase {
+
+    private Button beginBtn;
+    private Button registerBtn;
+    // Use this for initialization
+    void Start () {
+        beginBtn = transform.Find(&quot;beginBtn&quot;).GetComponent&lt;Button&gt;();
+        registerBtn = transform.Find(&quot;registerBtn&quot;).GetComponent&lt;Button&gt;();
+
+        //添加按钮点击的监听事件。
+        beginBtn.onClick.AddListener(beginClick);
+        registerBtn.onClick.AddListener(registerClick);
+    }
+
+    private void beginClick() {
+        //向上层发送消息，派遣启动显示游戏开始界面penel
+        Dispatch(AreaCode.UI, UIEvent.BEGIN_PANEL_ACTIVE, true);
+
+    }
+
+    private void registerClick() {
+
+        Dispatch(AreaCode.UI,UIEvent.REGISTER_PANEL_ACTIVE,true);
+    }
+    public override void OnDestroy()
+    {
+        base.OnDestroy();
+        beginBtn.onClick.RemoveAllListeners();
+        registerBtn.onClick.RemoveAllListeners();
+    }
+}
+</code></pre><p>beginClick函数接收登录按钮的点击事件，调用UIBase的Dispatch方法，向UIbase发送”显示登录界面” 的消息，</p>
+<pre><code>public class UIBase : MonoBase
+{
+    /// &lt;summary&gt;
+    /// 自身关心的消息集合
+    /// &lt;/summary&gt;
+    private List&lt;int&gt; list = new List&lt;int&gt;();
+
+    /// &lt;summary&gt;
+    /// 绑定一个或多个消息
+    /// &lt;/summary&gt;
+    /// &lt;param name=&quot;eventCodes&quot;&gt;Event codes.&lt;/param&gt;
+    /// params int [] eventCodes :可以接收多个参数。
+    protected void Bind(params int[] eventCodes)
+    {
+        list.AddRange(eventCodes);
+        //List.ToArray(); 将集合元素复制到新数组中。
+        UIManager.Instance.Add(list.ToArray(), this);
+    }
+
+    /// &lt;summary&gt;
+    /// 解除绑定的消息
+    /// &lt;/summary&gt;
+    protected void UnBind()
+    {
+        UIManager.Instance.Remove(list.ToArray(), this);
+        list.Clear();
+    }
+
+    /// &lt;summary&gt;
+    /// 自动移除绑定的消息
+    /// &lt;/summary&gt;
+    public  virtual void OnDestroy()
+    {
+        if (list != null)
+            UnBind();
+    }
+
+    /// &lt;summary&gt;
+    /// 发消息
+    /// &lt;/summary&gt;
+    /// &lt;param name=&quot;areaCode&quot;&gt;Area code.&lt;/param&gt;
+    /// &lt;param name=&quot;eventCode&quot;&gt;Event code.&lt;/param&gt;
+    /// &lt;param name=&quot;message&quot;&gt;Message.&lt;/param&gt;
+    public void Dispatch(int areaCode, int eventCode, object message)
+    {
+        //uibase传递给MsgCenter消息处理中心
+        MsgCenter.Instance.Dispatch(areaCode, eventCode, message);
+    }
+
+    /// &lt;summary&gt;
+    /// 设置面板显示和隐藏。
+    /// &lt;/summary&gt;
+    /// &lt;param name=&quot;active&quot;&gt;&lt;/param&gt;
+    protected void setPanelActive(bool active)
+    {
+        gameObject.SetActive(active);
+    }
+
+}
+</code></pre><p>UIbase的Dispatch方法，在把“显示登录界面”的请求，传递给MsgCenter（消息处理中心）</p>
+<pre><code>/// &lt;summary&gt;
+   /// 发送消息 系统里面所有的发消息 都通过这个方法来转发
+   ///   怎么转发？根据不同的模块 来发给 不同的模块 
+   ///     怎么识别模块呢？通过 areaCode
+   /// 
+   ///     第二个参数：事件码 作用？用来区分 做什么事情的
+   ///         比如说 第一个参数 识别到是角色模块 但是角色模块有很多功能 比如 移动 攻击 死亡 逃跑...
+   ///             就需要第二个参数 来识别 具体是做哪一个动作
+   ///     Dispatch调遣，分派。
+   /// &lt;/summary&gt;
+   public void Dispatch(int areaCode, int eventCode, object message)
+   {
+       switch (areaCode)
+       {
+           case AreaCode.AUDIO:
+               AudioManager.Instance.Execute(eventCode, message);
+               break;
+
+           case AreaCode.CHARACTER:
+               CharacterManager.Instance.Execute(eventCode, message);
+               break;
+
+           case AreaCode.GAME:
+               break;
+
+           case AreaCode.UI:
+               UIManager.Instance.Execute(eventCode, message);
+               break;
+
+           default:
+               break;
+       }
+   }
+</code></pre><p>MsgCenter（消息处理中心）：调用Dispatch方法，发送给ManagerBase的Execute方法。</p>
+<pre><code>/// &lt;summary&gt;
+  /// 处理自身的消息
+  /// &lt;/summary&gt;
+  /// &lt;param name=&quot;eventCode&quot;&gt;Event code.&lt;/param&gt;
+  /// &lt;param name=&quot;message&quot;&gt;Message.&lt;/param&gt;
+  public override void Execute(int eventCode, object message)
+  {
+      if (!dict.ContainsKey(eventCode))
+      {
+          Debug.LogWarning(&quot;没有注册 ： &quot; + eventCode);
+          return;
+      }
+
+      //一旦注册过这个消息 给所有的脚本 发过去
+      List&lt;MonoBase&gt; list = dict[eventCode];
+      for (int i = 0; i &lt; list.Count; i++)
+      {
+          list[i].Execute(eventCode, message);
+      }
+  }
+</code></pre><p>ManagerBase的Execute方法，分配下发给各个界面，让界面处理自身的消息。（注意：一个消息可以被多个脚本所响应）</p>
+<pre><code>void Awake() {
+        //注册绑定事件。
+        Bind(UIEvent.BEGIN_PANEL_ACTIVE);
+
+    }
+
+    public override void Execute(int eventCode, object message)
+    {
+        switch(eventCode){
+            case UIEvent.BEGIN_PANEL_ACTIVE:
+                setPanelActive((bool)message);
+                break;
+            default:
+                break;
+        }
+        base.Execute(eventCode, message);
+    }
+</code></pre><p>因为LoginPanel:里面绑定注册了“UIEvent.BEGIN_PANEL_ACTIVE” 事件，则会执行Execute方法，进行响应。显示登录界面。</p>
+<p> 到这来，我们就完成从注册事件，到响应事件的功能。</p>
+<p>要注意我们这个基于消息机制的UI框架，一个事件可以被多个界面代码模块所响应，同时一个界面代码模块，也可以注册绑定多个事件。（要先注册绑定，才会有响应）<br>优点：降低了各模块之间的耦合度并减少代码对组件的依赖，可以自动的添加和删除组件，方便用AssetBundle进行加载资源，不会出现代码，组件丢失。</p>
 
             </div>
             <hr>
@@ -563,7 +786,7 @@
                     </span>
                     <a href="https://jinchidong.github.io" class="b-link-green">Hexo</a>
                     <i class="fa fa-angle-right fa-lg fa-fw text-color"></i>
-                    <a href="/2019/03/17/hello-world/" class="b-link-green">大家好，我叫金驰东</a>
+                    <a href="/2019/03/17/hello-world/" class="b-link-green">UNITY框架</a>
                 </p>
             </div>
         </div>
@@ -593,13 +816,15 @@
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/19.jpg" class="responsive-img" alt="大家好，我叫金驰东">
+                        <img src="/medias/featureimages/13.jpg" class="responsive-img" alt="UNITY框架">
                         
-                        <span class="card-title">大家好，我叫金驰东</span>
+                        <span class="card-title">UNITY框架</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
-                    <div class="summary">Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hex</div>
+                    <div class="summary">基于消息机制的unity框架代码结构
+定义StartPanel(开始界面)，LoginPanel(登录界面)，RegisterPanel(注册界面)
+Framework文件夹:包含了框架所包含的工具类。UI文件夹：项目的界面操作文件。上代码</div>
                     <div class="publish-info">
                             <span class="publish-date">
                                 <i class="fa fa-clock-o fa-fw icon-date"></i>2019-03-17
@@ -627,13 +852,15 @@
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/19.jpg" class="responsive-img" alt="大家好，我叫金驰东">
+                        <img src="/medias/featureimages/13.jpg" class="responsive-img" alt="UNITY框架">
                         
-                        <span class="card-title">大家好，我叫金驰东</span>
+                        <span class="card-title">UNITY框架</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
-                    <div class="summary">Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hex</div>
+                    <div class="summary">基于消息机制的unity框架代码结构
+定义StartPanel(开始界面)，LoginPanel(登录界面)，RegisterPanel(注册界面)
+Framework文件夹:包含了框架所包含的工具类。UI文件夹：项目的界面操作文件。上代码</div>
                     <div class="publish-info">
                             <span class="publish-date">
                                 <i class="fa fa-clock-o fa-fw icon-date"></i>2019-03-17
@@ -754,7 +981,7 @@
 
             
                 &nbsp;<i class="fa fa-area-chart"></i>&nbsp;站点总字数:&nbsp;
-                <span class="white-color">76</span>
+                <span class="white-color">1.4k</span>
             
 
             
