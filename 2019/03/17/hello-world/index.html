@@ -1,10 +1,10 @@
 <!DOCTYPE HTML>
-<html lang="">
+<html lang="zh-CN">
 
 
 <head><meta name="generator" content="Hexo 3.8.0">
     <meta charset="utf-8">
-    <meta name="keywords" content="UNITY框架, jinchidong">
+    <meta name="keywords" content="UNITY框架, 金驰东">
     <meta name="description" content="基于消息机制的unity框架代码结构
 定义StartPanel(开始界面)，LoginPanel(登录界面)，RegisterPanel(注册界面)
 Framework文件夹:包含了框架所包含的工具类。UI文件夹：项目的界面操作文件。
@@ -109,7 +109,7 @@ vo">
     
     <li>
         <a id="toggleSearch" class="waves-effect waves-light">
-            <i id="searchIcon" class="mdi-action-search" title="Search"></i>
+            <i id="searchIcon" class="mdi-action-search" title="搜索"></i>
         </a>
     </li>
 
@@ -124,7 +124,7 @@ vo">
         <div class="logo-name">jinchidong</div>
         <div class="logo-desc">
             
-            Never really desperate, only the lost of the soul.
+            unity游戏开发程序师
             
         </div>
     </div>
@@ -375,7 +375,7 @@ vo">
                 <div class="col s7">
                     
                           <div class="article-tag">
-                            <span class="chip bg-color">No tag</span>
+                            <span class="chip bg-color">无标签</span>
                           </div>
                     
                 </div>
@@ -386,29 +386,29 @@ vo">
 
             <div class="post-info">
                 <div class="post-date info-break-policy">
-                    <i class="fa fa-calendar-minus-o fa-fw"></i>Publish Date:&nbsp;&nbsp;
+                    <i class="fa fa-calendar-minus-o fa-fw"></i>发布日期:&nbsp;&nbsp;
                     2019-03-17
                 </div>
 
                 
                     
                     <div class="info-break-policy">
-                        <i class="fa fa-file-word-o fa-fw"></i>Word Count:&nbsp;&nbsp;
+                        <i class="fa fa-file-word-o fa-fw"></i>文章字数:&nbsp;&nbsp;
                         1.4k
                     </div>
                     
 
                     
                     <div class="info-break-policy">
-                        <i class="fa fa-clock-o fa-fw"></i>Read Times:&nbsp;&nbsp;
-                        6 Min
+                        <i class="fa fa-clock-o fa-fw"></i>阅读时长:&nbsp;&nbsp;
+                        6 分
                     </div>
                     
                 
 				
 				
                     <div id="busuanzi_container_page_pv" class="info-break-policy">
-                        <i class="fa fa-eye fa-fw"></i>Read Count:&nbsp;&nbsp;
+                        <i class="fa fa-eye fa-fw"></i>阅读次数:&nbsp;&nbsp;
                         <span id="busuanzi_value_page_pv"></span>
                     </div>
 				
@@ -774,7 +774,7 @@ public void Add(int[] eventCodes, MonoBase mono)
 
 <div id="article-share">
     
-    <div class="social-share" data-disabled="qzone, qq, weibo, douban"></div>
+    <div class="social-share" data-disabled="qzone" data-wechat-qrcode-helper="<p>微信里点“发现”->“扫一扫”二维码便可查看分享。</p>"></div>
     
 </div>
 
@@ -783,7 +783,7 @@ public void Add(int[] eventCodes, MonoBase mono)
             <div class="reprint">
                 <p>
                     <span class="reprint-tip">
-                        <i class="fa fa-exclamation-circle"></i>&nbsp;&nbsp;Reprint please specify:
+                        <i class="fa fa-exclamation-circle"></i>&nbsp;&nbsp;转载请注明:
                     </span>
                     <a href="https://jinchidong.github.io" class="b-link-green">jinchidong</a>
                     <i class="fa fa-angle-right fa-lg fa-fw text-color"></i>
@@ -810,7 +810,7 @@ public void Add(int[] eventCodes, MonoBase mono)
         
         <div class="article col s12 m6" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fa fa-dot-circle-o"></i>&nbsp;Current
+                <i class="fa fa-dot-circle-o"></i>&nbsp;本篇
             </div>
             <div class="card">
                 <a href="/2019/03/17/hello-world/">
@@ -847,7 +847,7 @@ vo</div>
         
         <div class="article col s12 m6" data-aos="fade-up">
             <div class="article-badge right-badge text-color">
-                Current&nbsp;<i class="fa fa-dot-circle-o"></i>
+                本篇&nbsp;<i class="fa fa-dot-circle-o"></i>
             </div>
             <div class="card">
                 <a href="/2019/03/17/hello-world/">
@@ -913,9 +913,9 @@ vo</div>
 
         var url = document.location.href;
         newdiv.innerHTML += '<br />'
-            + 'From: jinchidong<br />'
-            + 'Author: jinchidong<br />'
-            + 'Link: <a href="' + url + '">' + url + '</a><br />'
+            + '来源: jinchidong<br />'
+            + '作者: jinchidong<br />'
+            + '链接: <a href="' + url + '">' + url + '</a><br />'
             + '本文章著作权归作者所有，任何形式的转载都请注明出处。';
 
         selection.selectAllChildren(newdiv);
@@ -926,7 +926,7 @@ vo</div>
     </div>
     <div class="col l3 hide-on-med-and-down">
         <div class="toc-widget">
-            <div class="toc-title"><i class="fa fa-list-alt"></i>&nbsp;&nbsp;TOC</div>
+            <div class="toc-title"><i class="fa fa-list-alt"></i>&nbsp;&nbsp;目录</div>
             <div id="toc-content"></div>
         </div>
     </div>
@@ -1030,8 +1030,8 @@ vo</div>
 <div id="searchModal" class="modal">
     <div class="modal-content">
         <div class="search-header">
-            <span class="title"><i class="fa fa-search"></i>&nbsp;&nbsp;Search</span>
-            <input type="search" id="searchInput" name="s" placeholder="Please enter a search keyword" class="search-input" autofocus>
+            <span class="title"><i class="fa fa-search"></i>&nbsp;&nbsp;搜索</span>
+            <input type="search" id="searchInput" name="s" placeholder="请输入搜索的关键字" class="search-input" autofocus>
         </div>
         <div id="searchResult"></div>
     </div>
