@@ -5,11 +5,11 @@
 <head><meta name="generator" content="Hexo 3.8.0">
     <meta charset="utf-8">
     <meta name="keywords" content="unity的5种旋转方式, 金驰东">
-    <meta name="description" content="##unity 五种旋转方式localEulerAngles、eulerAngles、rotation、localRotation和Rotate的区别
+    <meta name="description" content="#unity五种旋转方式localEulerAngles、eulerAngles、rotation、localRotation和Rotate的区别
 
 transform.localEulerAngles
 
-使用localEulerAng">
+使用localEulerAngle">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -348,7 +348,7 @@ transform.localEulerAngles
                     
                     <div class="info-break-policy">
                         <i class="fa fa-file-word-o fa-fw"></i>文章字数:&nbsp;&nbsp;
-                        1k
+                        1.1k
                     </div>
                     
 
@@ -371,7 +371,7 @@ transform.localEulerAngles
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <p>##unity 五种旋转方式localEulerAngles、eulerAngles、rotation、localRotation和Rotate的区别</p>
+                <p>#unity五种旋转方式localEulerAngles、eulerAngles、rotation、localRotation和Rotate的区别</p>
 <ol>
 <li><em>transform.localEulerAngles</em></li>
 </ol>
@@ -387,8 +387,7 @@ void Update () {
     transform.localEulerAngles= new Vector3(0f,agent,0f);
 }
 }
-</code></pre><p>这时，在程序还在跑着的时候，把B拽到A下，作为A的子游戏物体，这时,B的旋转角度为(0f,agent,0f)，结果证明也是这样<br><img src="https://img-blog.csdnimg.cn/20190303213033764.gif" alt="图片目前无法显示，请稍后再试"></p>
-<p>结论：通过</p>
+</code></pre><p>这时，在程序还在跑着的时候，把B拽到A下，作为A的子游戏物体，这时,B的旋转角度为(0f,agent,0f)，结果证明也是这样<br><a href="https://img-blog.csdnimg.cn/20190303213033764.gif" target="_blank" rel="noopener">https://img-blog.csdnimg.cn/20190303213033764.gif</a><br>结论：通过</p>
 <p> transform.localEulerAngles= new Vector3(0f,agent,0f);</p>
 <p>设置的角度是相对角度(类似于相对路径)</p>
 <ol start="2">
@@ -407,7 +406,7 @@ void Update () {
 }
 </code></pre><p>这时，在程序还在跑着的时候，把B拽到A下，作为A的子游戏物体，这时B的旋转角度是如何变化？</p>
 <p>如果是以父级游戏物体的坐标系为准为准的话，那么B的旋转角度为(0f,agent,0f)</p>
-<p>但是，事实证明，B的旋转角度不仅仅是y轴的值变，连x轴、z轴的值都在变<br><img src="https://img-blog.csdnimg.cn/20190303215422777.gif" alt="图片目前无法显示，请稍后再试"></p>
+<p>但是，事实证明，B的旋转角度不仅仅是y轴的值变，连x轴、z轴的值都在变<br>[<a href="https://img-blog.csdnimg.cn/20190303215422777.gif]" target="_blank" rel="noopener">https://img-blog.csdnimg.cn/20190303215422777.gif]</a></p>
 <p>结论：通过</p>
 <p>transform.eulerAngles= new Vector3(x,y,z)</p>
 <p>设置的角度是绝对角度(类似于绝对路径)</p>
@@ -432,7 +431,7 @@ void Update () {
 </code></pre><p>这时，在程序还在跑着的时候，把B拽到A下，作为A的子游戏物体，这时，你猜，B的旋转角度是如何变化？</p>
 <p>如果是以父级游戏物体的坐标系为准为准的话，那么B的旋转角度为(0,agent,45f)</p>
 <p>但是，事实证明，B的旋转角度不仅仅是y轴的值变，连x轴、z轴的值都在变</p>
-<p><img src="https://img-blog.csdnimg.cn/20190303185148596.gif" alt="图片目前无法显示，请稍后再试"></p>
+<p>[<a href="https://img-blog.csdnimg.cn/20190303185148596.gif]" target="_blank" rel="noopener">https://img-blog.csdnimg.cn/20190303185148596.gif]</a></p>
 <p>结论：通过</p>
 <p>Quaternion rotation= Quaternion.Euler(new Vector3(x, y,z))；</p>
 <p>Transform.rotation=rotation;</p>
@@ -644,11 +643,11 @@ void Update () {
                     </div>
                 </a>
                 <div class="card-content article-content">
-                    <div class="summary">##unity 五种旋转方式localEulerAngles、eulerAngles、rotation、localRotation和Rotate的区别
+                    <div class="summary">#unity五种旋转方式localEulerAngles、eulerAngles、rotation、localRotation和Rotate的区别
 
 transform.localEulerAngles
 
-使用localEulerAng</div>
+使用localEulerAngle</div>
                     <div class="publish-info">
                             <span class="publish-date">
                                 <i class="fa fa-clock-o fa-fw icon-date"></i>2019-03-18
