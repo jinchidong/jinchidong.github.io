@@ -379,7 +379,7 @@ void Update () {
     transform.localEulerAngles= new Vector3(0f,agent,0f);
 }
 }
-</code></pre><p>这时，在程序还在跑着的时候，把B拽到A下，作为A的子游戏物体，这时,B的旋转角度为(0f,agent,0f)，结果证明也是这样<br><img src="https://img-blog.csdnimg.cn/20190303213033764.gif" alt="点击这个查看效果"><br>结论：通过</p>
+</code></pre><p>这时，在程序还在跑着的时候，把B拽到A下，作为A的子游戏物体，这时,B的旋转角度为(0f,agent,0f)，结果证明也是这样<br><a href="https://img-blog.csdnimg.cn/20190303213033764.gif" target="_blank" rel="noopener">https://img-blog.csdnimg.cn/20190303213033764.gif</a><br>结论：通过</p>
 <p> transform.localEulerAngles= new Vector3(0f,agent,0f);</p>
 <p>设置的角度是相对角度(类似于相对路径)</p>
 <h2 id="2-transform-eulerAngles"><a href="#2-transform-eulerAngles" class="headerlink" title="2.  transform.eulerAngles"></a>2.  <em>transform.eulerAngles</em></h2><p>transform.eulerAngles= new Vector3(x,y,z)<br>new Vector(x,y,z)为游戏物体最终旋转到的目标角度，x.y,z的值分别都是以0为基准,假设游戏物体的初始角度为(x1,y1,z1),则游戏物体从(x1,y1,z1)旋转到(x,y,z),，同时也以世界坐标系为参考，而不是以父级游戏物体的坐标系为准。</p>
