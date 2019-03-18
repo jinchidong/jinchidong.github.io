@@ -5,11 +5,11 @@
 <head><meta name="generator" content="Hexo 3.8.0">
     <meta charset="utf-8">
     <meta name="keywords" content="unity的5种旋转方式, 金驰东">
-    <meta name="description" content="#unity 五种旋转方式localEulerAngles、eulerAngles、rotation、localRotation和Rotate的区别
+    <meta name="description" content="#unity 五种旋转方式localEulerAngles、eulerAngles、rotation、localRotation和Rotate的区别#
 
 transform.localEulerAngles
 
-使用localEulerAngl">
+使用localEulerAng">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -371,15 +371,13 @@ transform.localEulerAngles
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <p>#unity 五种旋转方式localEulerAngles、eulerAngles、rotation、localRotation和Rotate的区别</p>
+                <p>#unity 五种旋转方式localEulerAngles、eulerAngles、rotation、localRotation和Rotate的区别#</p>
 <ol>
 <li><em>transform.localEulerAngles</em></li>
 </ol>
-<p>使用localEulerAngles进行旋转的时候，我们要使用transform.localEulerAngles = new Vector3(x, y,z); 其中，new Vector(x,y,z)为游戏物体最终旋转到的目标角度，x.y,z的值分别都是以0为基准，假设游戏物体的初始角度为(x1,y1,z1),则游戏物体从(x1,y1,z1)旋转到(x,y,z),但是是以父游戏物体的坐标系为参考(自己是顶级游戏物体除外)</p>
-<p>举个例子：</p>
-<pre><code>假如游戏物体A,B,都没有父游戏物体,B初始旋转角度为(0,0,0),A的初始旋转角度为(0,0,45)，编写脚本并把它挂载到B上，脚本编写如下：
-</code></pre><p>using System.Collections;<br>using System.Collections.Generic;<br>using UnityEngine;<br>public class Test2 : MonoBehaviour {</p>
-<pre><code>private float agent;
+<p>使用localEulerAngles进行旋转的时候，我们要使用transform.localEulerAngles = new Vector3(x, y,z); 其中，new Vector(x,y,z)为游戏物体最终旋转到的目标角度，x.y,z的值分别都是以0为基准，假设游戏物体的初始角度为(x1,y1,z1),则游戏物体从(x1,y1,z1)旋转到(x,y,z),但是是以父游戏物体的坐标系为参考(自己是顶级游戏物体除外)<br>举个例子：<br>假如游戏物体A,B,都没有父游戏物体,B初始旋转角度为(0,0,0),A的初始旋转角度为(0,0,45)，编写脚本并把它挂载到B上，脚本编写如下：</p>
+<pre><code>public class Test2 : MonoBehaviour {
+private float agent;
 void Start () {
     agent = 0f;
 }
@@ -388,8 +386,8 @@ void Update () {
     agent += Time.deltaTime*50;
     transform.localEulerAngles= new Vector3(0f,agent,0f);
 }
-</code></pre><p>}</p>
-<p>这时，在程序还在跑着的时候，把B拽到A下，作为A的子游戏物体，这时,B的旋转角度为(0f,agent,0f)，结果证明也是这样!<br><a href="https://img-blog.csdnimg.cn/20190303213033764.gif" target="_blank" rel="noopener">图片目前无法显示，请稍后再试</a></p>
+}
+</code></pre><p>这时，在程序还在跑着的时候，把B拽到A下，作为A的子游戏物体，这时,B的旋转角度为(0f,agent,0f)，结果证明也是这样<br>![图片目前无法显示，请稍后再试[(<a href="https://img-blog.csdnimg.cn/20190303213033764.gif" target="_blank" rel="noopener">https://img-blog.csdnimg.cn/20190303213033764.gif</a>)</p>
 <p>结论：通过</p>
 <p> transform.localEulerAngles= new Vector3(0f,agent,0f);</p>
 <p>设置的角度是相对角度(类似于相对路径)</p>
@@ -397,9 +395,8 @@ void Update () {
 <li><em>transform.eulerAngles</em><br>transform.eulerAngles= new Vector3(x,y,z)<br>new Vector(x,y,z)为游戏物体最终旋转到的目标角度，x.y,z的值分别都是以0为基准,假设游戏物体的初始角度为(x1,y1,z1),则游戏物体从(x1,y1,z1)旋转到(x,y,z),，同时也以世界坐标系为参考，而不是以父级游戏物体的坐标系为准。</li>
 </ol>
 <p>举个例子：<br>    假如游戏物体A,B,都没有父游戏物体,B初始旋转角度为(0,0,0),A的初始旋转角度为(0,0,45)，编写脚本并把它挂载到B上，脚本编写如下：</p>
-<p>using System.Collections;<br>using System.Collections.Generic;<br>using UnityEngine;</p>
-<p>public class Test2 : MonoBehaviour {</p>
-<pre><code>private float agent;
+<pre><code>public class Test2 : MonoBehaviour {
+private float agent;
 void Start () {
     agent = 0f;
 }
@@ -407,9 +404,10 @@ void Update () {
     agent += Time.deltaTime*50;
     transform.eulerAngles= new Vector3(0f,agent,0f);
 }
-</code></pre><p>}<br>这时，在程序还在跑着的时候，把B拽到A下，作为A的子游戏物体，这时B的旋转角度是如何变化？</p>
+}
+</code></pre><p>这时，在程序还在跑着的时候，把B拽到A下，作为A的子游戏物体，这时B的旋转角度是如何变化？</p>
 <p>如果是以父级游戏物体的坐标系为准为准的话，那么B的旋转角度为(0f,agent,0f)</p>
-<p>但是，事实证明，B的旋转角度不仅仅是y轴的值变，连x轴、z轴的值都在变<br><a href="https://img-blog.csdnimg.cn/20190303215422777.gif" target="_blank" rel="noopener">图片目前无法显示，请稍后再试</a></p>
+<p>但是，事实证明，B的旋转角度不仅仅是y轴的值变，连x轴、z轴的值都在变<br><img src="https://img-blog.csdnimg.cn/20190303215422777.gif" alt="图片目前无法显示，请稍后再试"></p>
 <p>结论：通过</p>
 <p>transform.eulerAngles= new Vector3(x,y,z)</p>
 <p>设置的角度是绝对角度(类似于绝对路径)</p>
@@ -421,9 +419,8 @@ void Update () {
 <p>Transform.rotation=rotation;</p>
 <p> new Vector(x,y,z)为游戏物体最终旋转到的目标角度，x.y,z的值分别都是以0为基准,假设游戏物体的初始角度为(x1,y1,z1),则游戏物体从(x1,y1,z1)旋转到(x,y,z),，同时也以世界坐标系为参考，而不是以父级游戏物体的坐标系为准。</p>
 <p>举个例子：<br>    假如游戏物体A,B,都没有父游戏物体,B初始旋转角度为(0,0,45),A的初始旋转角度为(0,0,45)，编写脚本并把它挂载到B上，脚本编写如下：</p>
-<p>using System.Collections;<br>using System.Collections.Generic;<br>using UnityEngine;</p>
-<p>public class Test2 : MonoBehaviour {</p>
-<pre><code>private float agent;
+<pre><code>public class Test2 : MonoBehaviour {
+private float agent;
 void Start () {
     agent = 0f;
 }
@@ -431,17 +428,17 @@ void Update () {
     agent += Time.deltaTime*50;
     transform.rotation = Quaternion.Euler(new Vector3(0f,agent,45f));
 }
-</code></pre><p>}<br>这时，在程序还在跑着的时候，把B拽到A下，作为A的子游戏物体，这时，你猜，B的旋转角度是如何变化？</p>
+}
+</code></pre><p>这时，在程序还在跑着的时候，把B拽到A下，作为A的子游戏物体，这时，你猜，B的旋转角度是如何变化？</p>
 <p>如果是以父级游戏物体的坐标系为准为准的话，那么B的旋转角度为(0,agent,45f)</p>
-<p>但是，事实证明，B的旋转角度不仅仅是y轴的值变，连x轴、z轴的值都在变<br><a href="https://img-blog.csdnimg.cn/20190303185148596.gif" target="_blank" rel="noopener">图片目前无法显示，请稍后再试</a></p>
+<p>但是，事实证明，B的旋转角度不仅仅是y轴的值变，连x轴、z轴的值都在变<br><img src="https://img-blog.csdnimg.cn/20190303185148596.gif" alt="图片目前无法显示，请稍后再试"></p>
 <p>结论：通过</p>
 <p>Quaternion rotation= Quaternion.Euler(new Vector3(x, y,z))；</p>
 <p>Transform.rotation=rotation;</p>
 <p>设置的角度是绝对角度(类似于绝对路径)</p>
 <ol start="4">
-<li>transform.localRotation</li>
+<li>transform.localRotation<br>类似于localEulerAngles，不再叙述</li>
 </ol>
-<p>类似于localEulerAngles，不再叙述</p>
 <ol start="5">
 <li>transform.Rotate(参数)</li>
 </ol>
@@ -646,11 +643,11 @@ void Update () {
                     </div>
                 </a>
                 <div class="card-content article-content">
-                    <div class="summary">#unity 五种旋转方式localEulerAngles、eulerAngles、rotation、localRotation和Rotate的区别
+                    <div class="summary">#unity 五种旋转方式localEulerAngles、eulerAngles、rotation、localRotation和Rotate的区别#
 
 transform.localEulerAngles
 
-使用localEulerAngl</div>
+使用localEulerAng</div>
                     <div class="publish-info">
                             <span class="publish-date">
                                 <i class="fa fa-clock-o fa-fw icon-date"></i>2019-03-18
@@ -832,7 +829,7 @@ vo</div>
 
             
                 &nbsp;<i class="fa fa-area-chart"></i>&nbsp;站点总字数:&nbsp;
-                <span class="white-color">2.5k</span>
+                <span class="white-color">2.4k</span>
             
 
             
