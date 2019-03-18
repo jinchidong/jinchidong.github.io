@@ -5,8 +5,7 @@
 <head><meta name="generator" content="Hexo 3.8.0">
     <meta charset="utf-8">
     <meta name="keywords" content="unity的5种旋转方式, 金驰东">
-    <meta name="description" content="unity五种旋转方式##1. transform.localEulerAngles##
-使用localEulerAngles进行旋转的时候，我们要使用transform.localEulerAngles = new Vector3(x, ">
+    <meta name="description" content="unity五种旋转方式1. transform.localEulerAngles使用localEulerAngles进行旋转的时候，我们要使用transform.localEulerAngles = new Vector3(x, y,z);">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -345,7 +344,7 @@
                     
                     <div class="info-break-policy">
                         <i class="fa fa-file-word-o fa-fw"></i>文章字数:&nbsp;&nbsp;
-                        1.1k
+                        1k
                     </div>
                     
 
@@ -368,8 +367,7 @@
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h1 id="unity五种旋转方式"><a href="#unity五种旋转方式" class="headerlink" title="unity五种旋转方式"></a>unity五种旋转方式</h1><p>##1. <em>transform.localEulerAngles</em>##</p>
-<p>使用localEulerAngles进行旋转的时候，我们要使用transform.localEulerAngles = new Vector3(x, y,z); 其中，new Vector(x,y,z)为游戏物体最终旋转到的目标角度，x.y,z的值分别都是以0为基准，假设游戏物体的初始角度为(x1,y1,z1),则游戏物体从(x1,y1,z1)旋转到(x,y,z),但是是以父游戏物体的坐标系为参考(自己是顶级游戏物体除外)<br>举个例子：<br>假如游戏物体A,B,都没有父游戏物体,B初始旋转角度为(0,0,0),A的初始旋转角度为(0,0,45)，编写脚本并把它挂载到B上，脚本编写如下：</p>
+                <h1 id="unity五种旋转方式"><a href="#unity五种旋转方式" class="headerlink" title="unity五种旋转方式"></a>unity五种旋转方式</h1><h2 id="1-transform-localEulerAngles"><a href="#1-transform-localEulerAngles" class="headerlink" title="1. transform.localEulerAngles"></a>1. <em>transform.localEulerAngles</em></h2><p>使用localEulerAngles进行旋转的时候，我们要使用transform.localEulerAngles = new Vector3(x, y,z); 其中，new Vector(x,y,z)为游戏物体最终旋转到的目标角度，x.y,z的值分别都是以0为基准，假设游戏物体的初始角度为(x1,y1,z1),则游戏物体从(x1,y1,z1)旋转到(x,y,z),但是是以父游戏物体的坐标系为参考(自己是顶级游戏物体除外)<br>举个例子：<br>假如游戏物体A,B,都没有父游戏物体,B初始旋转角度为(0,0,0),A的初始旋转角度为(0,0,45)，编写脚本并把它挂载到B上，脚本编写如下：</p>
 <pre><code>public class Test2 : MonoBehaviour {
 private float agent;
 void Start () {
@@ -381,10 +379,10 @@ void Update () {
     transform.localEulerAngles= new Vector3(0f,agent,0f);
 }
 }
-</code></pre><p>这时，在程序还在跑着的时候，把B拽到A下，作为A的子游戏物体，这时,B的旋转角度为(0f,agent,0f)，结果证明也是这样<br><a href="https://img-blog.csdnimg.cn/20190303213033764.gif" target="_blank" rel="noopener">https://img-blog.csdnimg.cn/20190303213033764.gif</a><br>结论：通过</p>
+</code></pre><p>这时，在程序还在跑着的时候，把B拽到A下，作为A的子游戏物体，这时,B的旋转角度为(0f,agent,0f)，结果证明也是这样<br><img src="https://img-blog.csdnimg.cn/20190303213033764.gif" alt="点击这个查看效果"><br>结论：通过</p>
 <p> transform.localEulerAngles= new Vector3(0f,agent,0f);</p>
 <p>设置的角度是相对角度(类似于相对路径)</p>
-<p>##2.  <em>transform.eulerAngles</em>##<br>transform.eulerAngles= new Vector3(x,y,z)<br>new Vector(x,y,z)为游戏物体最终旋转到的目标角度，x.y,z的值分别都是以0为基准,假设游戏物体的初始角度为(x1,y1,z1),则游戏物体从(x1,y1,z1)旋转到(x,y,z),，同时也以世界坐标系为参考，而不是以父级游戏物体的坐标系为准。</p>
+<h2 id="2-transform-eulerAngles"><a href="#2-transform-eulerAngles" class="headerlink" title="2.  transform.eulerAngles"></a>2.  <em>transform.eulerAngles</em></h2><p>transform.eulerAngles= new Vector3(x,y,z)<br>new Vector(x,y,z)为游戏物体最终旋转到的目标角度，x.y,z的值分别都是以0为基准,假设游戏物体的初始角度为(x1,y1,z1),则游戏物体从(x1,y1,z1)旋转到(x,y,z),，同时也以世界坐标系为参考，而不是以父级游戏物体的坐标系为准。</p>
 <p>举个例子：<br>    假如游戏物体A,B,都没有父游戏物体,B初始旋转角度为(0,0,0),A的初始旋转角度为(0,0,45)，编写脚本并把它挂载到B上，脚本编写如下：</p>
 <pre><code>public class Test2 : MonoBehaviour {
 private float agent;
@@ -402,8 +400,7 @@ void Update () {
 <p>结论：通过</p>
 <p>transform.eulerAngles= new Vector3(x,y,z)</p>
 <p>设置的角度是绝对角度(类似于绝对路径)</p>
-<p>##3. <em>transform.rotation</em>##</p>
-<p>//将欧拉旋转角转换为四元素旋转角</p>
+<h2 id="3-transform-rotation"><a href="#3-transform-rotation" class="headerlink" title="3. transform.rotation"></a>3. <em>transform.rotation</em></h2><p>//将欧拉旋转角转换为四元素旋转角</p>
 <p>Quaternion rotation= Quaternion.Euler(new Vector3(x, y,z))；</p>
 <p>Transform.rotation=rotation;</p>
 <p> new Vector(x,y,z)为游戏物体最终旋转到的目标角度，x.y,z的值分别都是以0为基准,假设游戏物体的初始角度为(x1,y1,z1),则游戏物体从(x1,y1,z1)旋转到(x,y,z),，同时也以世界坐标系为参考，而不是以父级游戏物体的坐标系为准。</p>
@@ -426,9 +423,8 @@ void Update () {
 <p>Quaternion rotation= Quaternion.Euler(new Vector3(x, y,z))；</p>
 <p>Transform.rotation=rotation;</p>
 <p>设置的角度是绝对角度(类似于绝对路径)</p>
-<p>##4. transform.localRotation##<br>类似于localEulerAngles，不再叙述</p>
-<p>##5. transform.Rotate(参数)##</p>
-<p>transform.Rotate(x,y,z)：以自身坐标系为参考，而不是世界坐标系，分别以x度y度z度绕X轴、Y轴、Z轴匀速旋转</p>
+<h2 id="4-transform-localRotation"><a href="#4-transform-localRotation" class="headerlink" title="4. transform.localRotation"></a>4. transform.localRotation</h2><p>类似于localEulerAngles，不再叙述</p>
+<h2 id="5-transform-Rotate-参数"><a href="#5-transform-Rotate-参数" class="headerlink" title="5. transform.Rotate(参数)"></a>5. transform.Rotate(参数)</h2><p>transform.Rotate(x,y,z)：以自身坐标系为参考，而不是世界坐标系，分别以x度y度z度绕X轴、Y轴、Z轴匀速旋转</p>
 <p>transform.Rotate(轴，Space.Self):以自身坐标系为参考</p>
 <p>Transform.Rotate(轴，Space.World):以世界坐标系为参考</p>
 
@@ -629,8 +625,7 @@ void Update () {
                     </div>
                 </a>
                 <div class="card-content article-content">
-                    <div class="summary">unity五种旋转方式##1. transform.localEulerAngles##
-使用localEulerAngles进行旋转的时候，我们要使用transform.localEulerAngles = new Vector3(x, </div>
+                    <div class="summary">unity五种旋转方式1. transform.localEulerAngles使用localEulerAngles进行旋转的时候，我们要使用transform.localEulerAngles = new Vector3(x, y,z);</div>
                     <div class="publish-info">
                             <span class="publish-date">
                                 <i class="fa fa-clock-o fa-fw icon-date"></i>2019-03-18
