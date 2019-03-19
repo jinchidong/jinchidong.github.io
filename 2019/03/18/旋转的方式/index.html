@@ -313,8 +313,8 @@
                     
                     <div class="article-tag">
                         
-                            <a href="/tags/unity-旋转/" target="_blank">
-                                <span class="chip bg-color">-unity_旋转</span>
+                            <a href="/tags/易混淆点/" target="_blank">
+                                <span class="chip bg-color">易混淆点</span>
                             </a>
                         
                     </div>
@@ -325,8 +325,8 @@
                     <div class="post-cate">
                         <i class="fa fa-bookmark fa-fw icon-category"></i>
                         
-                            <a href="/categories/易混淆点/" class="post-category" target="_blank">
-                                易混淆点
+                            <a href="/categories/UNITY/" class="post-category" target="_blank">
+                                UNITY
                             </a>
                         
                     </div>
@@ -379,11 +379,8 @@ void Update () {
     transform.localEulerAngles= new Vector3(0f,agent,0f);
 }
 }
-</code></pre><p>这时，在程序还在跑着的时候，把B拽到A下，作为A的子游戏物体，这时,B的旋转角度为(0f,agent,0f)，结果证明也是这样<br><a href="https://img-blog.csdnimg.cn/20190303213033764.gif" target="_blank" rel="noopener">https://img-blog.csdnimg.cn/20190303213033764.gif</a><br>结论：通过</p>
-<p> transform.localEulerAngles= new Vector3(0f,agent,0f);</p>
-<p>设置的角度是相对角度(类似于相对路径)</p>
-<h2 id="2-transform-eulerAngles"><a href="#2-transform-eulerAngles" class="headerlink" title="2.  transform.eulerAngles"></a>2.  <em>transform.eulerAngles</em></h2><p>transform.eulerAngles= new Vector3(x,y,z)<br>new Vector(x,y,z)为游戏物体最终旋转到的目标角度，x.y,z的值分别都是以0为基准,假设游戏物体的初始角度为(x1,y1,z1),则游戏物体从(x1,y1,z1)旋转到(x,y,z),，同时也以世界坐标系为参考，而不是以父级游戏物体的坐标系为准。</p>
-<p>举个例子：<br>    假如游戏物体A,B,都没有父游戏物体,B初始旋转角度为(0,0,0),A的初始旋转角度为(0,0,45)，编写脚本并把它挂载到B上，脚本编写如下：</p>
+</code></pre><p>这时，在程序还在跑着的时候，把B拽到A下，作为A的子游戏物体，这时,B的旋转角度为(0f,agent,0f)，结果证明也是这样<br><a href="https://img-blog.csdnimg.cn/20190303213033764.gif" target="_blank" rel="noopener">https://img-blog.csdnimg.cn/20190303213033764.gif</a><br>结论：通过<br> transform.localEulerAngles= new Vector3(0f,agent,0f);<br>设置的角度是相对角度(类似于相对路径)</p>
+<h2 id="2-transform-eulerAngles"><a href="#2-transform-eulerAngles" class="headerlink" title="2.  transform.eulerAngles"></a>2.  <em>transform.eulerAngles</em></h2><p>transform.eulerAngles= new Vector3(x,y,z)<br>new Vector(x,y,z)为游戏物体最终旋转到的目标角度，x.y,z的值分别都是以0为基准,假设游戏物体的初始角度为(x1,y1,z1),则游戏物体从(x1,y1,z1)旋转到(x,y,z),，同时也以世界坐标系为参考，而不是以父级游戏物体的坐标系为准。<br>举个例子：<br>    假如游戏物体A,B,都没有父游戏物体,B初始旋转角度为(0,0,0),A的初始旋转角度为(0,0,45)，编写脚本并把它挂载到B上，脚本编写如下：</p>
 <pre><code>public class Test2 : MonoBehaviour {
 private float agent;
 void Start () {
@@ -394,17 +391,8 @@ void Update () {
     transform.eulerAngles= new Vector3(0f,agent,0f);
 }
 }
-</code></pre><p>这时，在程序还在跑着的时候，把B拽到A下，作为A的子游戏物体，这时B的旋转角度是如何变化？</p>
-<p>如果是以父级游戏物体的坐标系为准为准的话，那么B的旋转角度为(0f,agent,0f)</p>
-<p>但是，事实证明，B的旋转角度不仅仅是y轴的值变，连x轴、z轴的值都在变<br><a href="https://img-blog.csdnimg.cn/20190303215422777.gif" target="_blank" rel="noopener">https://img-blog.csdnimg.cn/20190303215422777.gif</a></p>
-<p>结论：通过</p>
-<p>transform.eulerAngles= new Vector3(x,y,z)</p>
-<p>设置的角度是绝对角度(类似于绝对路径)</p>
-<h2 id="3-transform-rotation"><a href="#3-transform-rotation" class="headerlink" title="3. transform.rotation"></a>3. <em>transform.rotation</em></h2><p>//将欧拉旋转角转换为四元素旋转角</p>
-<p>Quaternion rotation= Quaternion.Euler(new Vector3(x, y,z))；</p>
-<p>Transform.rotation=rotation;</p>
-<p> new Vector(x,y,z)为游戏物体最终旋转到的目标角度，x.y,z的值分别都是以0为基准,假设游戏物体的初始角度为(x1,y1,z1),则游戏物体从(x1,y1,z1)旋转到(x,y,z),，同时也以世界坐标系为参考，而不是以父级游戏物体的坐标系为准。</p>
-<p>举个例子：<br>    假如游戏物体A,B,都没有父游戏物体,B初始旋转角度为(0,0,45),A的初始旋转角度为(0,0,45)，编写脚本并把它挂载到B上，脚本编写如下：</p>
+</code></pre><p>这时，在程序还在跑着的时候，把B拽到A下，作为A的子游戏物体，这时B的旋转角度是如何变化？<br>如果是以父级游戏物体的坐标系为准为准的话，那么B的旋转角度为(0f,agent,0f)<br>但是，事实证明，B的旋转角度不仅仅是y轴的值变，连x轴、z轴的值都在变<br><a href="https://img-blog.csdnimg.cn/20190303215422777.gif" target="_blank" rel="noopener">https://img-blog.csdnimg.cn/20190303215422777.gif</a><br>结论：通过<br>transform.eulerAngles= new Vector3(x,y,z)<br>设置的角度是绝对角度(类似于绝对路径)</p>
+<h2 id="3-transform-rotation"><a href="#3-transform-rotation" class="headerlink" title="3. transform.rotation"></a>3. <em>transform.rotation</em></h2><p>//将欧拉旋转角转换为四元素旋转角<br>Quaternion rotation= Quaternion.Euler(new Vector3(x, y,z))；<br>Transform.rotation=rotation;<br> new Vector(x,y,z)为游戏物体最终旋转到的目标角度，x.y,z的值分别都是以0为基准,假设游戏物体的初始角度为(x1,y1,z1),则游戏物体从(x1,y1,z1)旋转到(x,y,z),，同时也以世界坐标系为参考，而不是以父级游戏物体的坐标系为准。<br>举个例子：<br>    假如游戏物体A,B,都没有父游戏物体,B初始旋转角度为(0,0,45),A的初始旋转角度为(0,0,45)，编写脚本并把它挂载到B上，脚本编写如下：</p>
 <pre><code>public class Test2 : MonoBehaviour {
 private float agent;
 void Start () {
@@ -415,18 +403,9 @@ void Update () {
     transform.rotation = Quaternion.Euler(new Vector3(0f,agent,45f));
 }
 }
-</code></pre><p>这时，在程序还在跑着的时候，把B拽到A下，作为A的子游戏物体，这时，你猜，B的旋转角度是如何变化？</p>
-<p>如果是以父级游戏物体的坐标系为准为准的话，那么B的旋转角度为(0,agent,45f)</p>
-<p>但是，事实证明，B的旋转角度不仅仅是y轴的值变，连x轴、z轴的值都在变</p>
-<p><a href="https://img-blog.csdnimg.cn/20190303185148596.gif" target="_blank" rel="noopener">https://img-blog.csdnimg.cn/20190303185148596.gif</a></p>
-<p>结论：通过</p>
-<p>Quaternion rotation= Quaternion.Euler(new Vector3(x, y,z))；</p>
-<p>Transform.rotation=rotation;</p>
-<p>设置的角度是绝对角度(类似于绝对路径)</p>
+</code></pre><p>这时，在程序还在跑着的时候，把B拽到A下，作为A的子游戏物体，这时，你猜，B的旋转角度是如何变化？<br>如果是以父级游戏物体的坐标系为准为准的话，那么B的旋转角度为(0,agent,45f)<br>但是，事实证明，B的旋转角度不仅仅是y轴的值变，连x轴、z轴的值都在变<br><a href="https://img-blog.csdnimg.cn/20190303185148596.gif" target="_blank" rel="noopener">https://img-blog.csdnimg.cn/20190303185148596.gif</a><br>结论：通过<br>Quaternion rotation= Quaternion.Euler(new Vector3(x, y,z))；<br>Transform.rotation=rotation;<br>设置的角度是绝对角度(类似于绝对路径)</p>
 <h2 id="4-transform-localRotation"><a href="#4-transform-localRotation" class="headerlink" title="4. transform.localRotation"></a>4. transform.localRotation</h2><p>类似于localEulerAngles，不再叙述</p>
-<h2 id="5-transform-Rotate-参数"><a href="#5-transform-Rotate-参数" class="headerlink" title="5. transform.Rotate(参数)"></a>5. transform.Rotate(参数)</h2><p>transform.Rotate(x,y,z)：以自身坐标系为参考，而不是世界坐标系，分别以x度y度z度绕X轴、Y轴、Z轴匀速旋转</p>
-<p>transform.Rotate(轴，Space.Self):以自身坐标系为参考</p>
-<p>Transform.Rotate(轴，Space.World):以世界坐标系为参考</p>
+<h2 id="5-transform-Rotate-参数"><a href="#5-transform-Rotate-参数" class="headerlink" title="5. transform.Rotate(参数)"></a>5. transform.Rotate(参数)</h2><p>transform.Rotate(x,y,z)：以自身坐标系为参考，而不是世界坐标系，分别以x度y度z度绕X轴、Y轴、Z轴匀速旋转<br>transform.Rotate(轴，Space.Self):以自身坐标系为参考<br>Transform.Rotate(轴，Space.World):以世界坐标系为参考</p>
 
             </div>
             <hr>
@@ -634,8 +613,8 @@ void Update () {
                             
                             <i class="fa fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/易混淆点/" class="post-category" target="_blank">
-                                    易混淆点
+                            <a href="/categories/UNITY/" class="post-category" target="_blank">
+                                    UNITY
                                 </a>
                             
                             
@@ -646,8 +625,8 @@ void Update () {
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/unity-旋转/" target="_blank">
-                        <span class="chip bg-color">-unity_旋转</span>
+                    <a href="/tags/易混淆点/" target="_blank">
+                        <span class="chip bg-color">易混淆点</span>
                     </a>
                     
                 </div>
@@ -683,8 +662,8 @@ vo</div>
                             
                             <i class="fa fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/难点/" class="post-category" target="_blank">
-                                    难点
+                            <a href="/categories/UNITY/" class="post-category" target="_blank">
+                                    UNITY
                                 </a>
                             
                             
@@ -694,8 +673,8 @@ vo</div>
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/unity-框架/" target="_blank">
-                        <span class="chip bg-color">-unity_框架</span>
+                    <a href="/tags/难点/" target="_blank">
+                        <span class="chip bg-color">难点</span>
                     </a>
                     
                 </div>
