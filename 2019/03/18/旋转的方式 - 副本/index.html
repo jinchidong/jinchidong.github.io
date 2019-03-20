@@ -4,14 +4,8 @@
 
 <head><meta name="generator" content="Hexo 3.8.0">
     <meta charset="utf-8">
-    <meta name="keywords" content="网易云音乐真实链接获取, 金驰东">
-    <meta name="description" content="网易云音乐真实链接获取
-
-网易云现在有很多歌曲都要付费了，当喜欢某首歌想要下载的时候，却往往要开会员或者2元购买歌曲，但我们可以通过获取歌曲的真实链接然后通过迅雷等第三方软件下载就OK了
-
-
-
-首先打开歌曲，然后点分享，随后点击复制链接，但">
+    <meta name="keywords" content="unity的5种旋转方式, 金驰东">
+    <meta name="description" content="unity五种旋转方式1. transform.localEulerAngles使用localEulerAngles进行旋转的时候，我们要使用transform.localEulerAngles = new Vector3(x, y,z);">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -19,7 +13,7 @@
     <meta name="format-detection" content="telephone=no">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <title>网易云音乐真实链接获取 | 金驰东</title>
+    <title>unity的5种旋转方式 | 金驰东</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/font-awesome.min.css">
@@ -221,13 +215,13 @@
 
 
 
-<div class="bg-cover post-cover" style="background-image: url('/medias/featureimages/1.jpg')">
+<div class="bg-cover post-cover" style="background-image: url('/medias/featureimages/10.jpg')">
     <div class="container">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
                     <div class="description center-align post-title">
-                        网易云音乐真实链接获取
+                        unity的5种旋转方式
                     </div>
                 </div>
             </div>
@@ -319,8 +313,8 @@
                     
                     <div class="article-tag">
                         
-                            <a href="/tags/网易云/" target="_blank">
-                                <span class="chip bg-color">网易云</span>
+                            <a href="/tags/易混淆点/" target="_blank">
+                                <span class="chip bg-color">易混淆点</span>
                             </a>
                         
                     </div>
@@ -331,8 +325,8 @@
                     <div class="post-cate">
                         <i class="fa fa-bookmark fa-fw icon-category"></i>
                         
-                            <a href="/categories/小技巧/" class="post-category" target="_blank">
-                                小技巧
+                            <a href="/categories/UNITY/" class="post-category" target="_blank">
+                                UNITY
                             </a>
                         
                     </div>
@@ -343,21 +337,21 @@
             <div class="post-info">
                 <div class="post-date info-break-policy">
                     <i class="fa fa-calendar-minus-o fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2019-03-19
+                    2019-03-18
                 </div>
 
                 
                     
                     <div class="info-break-policy">
                         <i class="fa fa-file-word-o fa-fw"></i>文章字数:&nbsp;&nbsp;
-                        201
+                        1k
                     </div>
                     
 
                     
                     <div class="info-break-policy">
                         <i class="fa fa-clock-o fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                        1 分
+                        4 分
                     </div>
                     
                 
@@ -373,16 +367,45 @@
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h1 id="网易云音乐真实链接获取"><a href="#网易云音乐真实链接获取" class="headerlink" title="网易云音乐真实链接获取"></a>网易云音乐真实链接获取</h1><blockquote>
-<blockquote>
-<p>网易云现在有很多歌曲都要付费了，当喜欢某首歌想要下载的时候，却往往要开会员或者2元购买歌曲，但我们可以通过获取歌曲的真实链接然后通过迅雷等第三方软件下载就OK了</p>
-</blockquote>
-</blockquote>
-<ul>
-<li><em>首先打开歌曲，然后点分享，随后点击复制链接，但这个链接并不是真实的地址</em></li>
-<li><em>例如：获取了《我最爱的人》这首歌的外链，<a href="https://music.163.com/song?id=1325711345&amp;userid=540831081" target="_blank" rel="noopener">https://music.163.com/song?id=1325711345&amp;userid=540831081</a> ，但怎么获取真实链接呢，首先把id记下，然后把song后面的删除并替换为/media/outer/url?id=1325711345.mp3</em></li>
-<li><em>最后打开迅雷等第三方软件就可根据地址下载了</em></li>
-</ul>
+                <h1 id="unity五种旋转方式"><a href="#unity五种旋转方式" class="headerlink" title="unity五种旋转方式"></a>unity五种旋转方式</h1><h2 id="1-transform-localEulerAngles"><a href="#1-transform-localEulerAngles" class="headerlink" title="1. transform.localEulerAngles"></a>1. <em>transform.localEulerAngles</em></h2><p>使用localEulerAngles进行旋转的时候，我们要使用transform.localEulerAngles = new Vector3(x, y,z); 其中，new Vector(x,y,z)为游戏物体最终旋转到的目标角度，x.y,z的值分别都是以0为基准，假设游戏物体的初始角度为(x1,y1,z1),则游戏物体从(x1,y1,z1)旋转到(x,y,z),但是是以父游戏物体的坐标系为参考(自己是顶级游戏物体除外)<br>举个例子：<br>假如游戏物体A,B,都没有父游戏物体,B初始旋转角度为(0,0,0),A的初始旋转角度为(0,0,45)，编写脚本并把它挂载到B上，脚本编写如下：</p>
+<pre><code>public class Test2 : MonoBehaviour {
+private float agent;
+void Start () {
+    agent = 0f;
+}
+// Update is called once per frame
+void Update () {
+    agent += Time.deltaTime*50;
+    transform.localEulerAngles= new Vector3(0f,agent,0f);
+}
+}
+</code></pre><p>这时，在程序还在跑着的时候，把B拽到A下，作为A的子游戏物体，这时,B的旋转角度为(0f,agent,0f)，结果证明也是这样<br><a href="https://img-blog.csdnimg.cn/20190303213033764.gif" target="_blank" rel="noopener">https://img-blog.csdnimg.cn/20190303213033764.gif</a><br>结论：通过<br> transform.localEulerAngles= new Vector3(0f,agent,0f);<br>设置的角度是相对角度(类似于相对路径)</p>
+<h2 id="2-transform-eulerAngles"><a href="#2-transform-eulerAngles" class="headerlink" title="2.  transform.eulerAngles"></a>2.  <em>transform.eulerAngles</em></h2><p>transform.eulerAngles= new Vector3(x,y,z)<br>new Vector(x,y,z)为游戏物体最终旋转到的目标角度，x.y,z的值分别都是以0为基准,假设游戏物体的初始角度为(x1,y1,z1),则游戏物体从(x1,y1,z1)旋转到(x,y,z),，同时也以世界坐标系为参考，而不是以父级游戏物体的坐标系为准。<br>举个例子：<br>    假如游戏物体A,B,都没有父游戏物体,B初始旋转角度为(0,0,0),A的初始旋转角度为(0,0,45)，编写脚本并把它挂载到B上，脚本编写如下：</p>
+<pre><code>public class Test2 : MonoBehaviour {
+private float agent;
+void Start () {
+    agent = 0f;
+}
+void Update () {
+    agent += Time.deltaTime*50;
+    transform.eulerAngles= new Vector3(0f,agent,0f);
+}
+}
+</code></pre><p>这时，在程序还在跑着的时候，把B拽到A下，作为A的子游戏物体，这时B的旋转角度是如何变化？<br>如果是以父级游戏物体的坐标系为准为准的话，那么B的旋转角度为(0f,agent,0f)<br>但是，事实证明，B的旋转角度不仅仅是y轴的值变，连x轴、z轴的值都在变<br><a href="https://img-blog.csdnimg.cn/20190303215422777.gif" target="_blank" rel="noopener">https://img-blog.csdnimg.cn/20190303215422777.gif</a><br>结论：通过<br>transform.eulerAngles= new Vector3(x,y,z)<br>设置的角度是绝对角度(类似于绝对路径)</p>
+<h2 id="3-transform-rotation"><a href="#3-transform-rotation" class="headerlink" title="3. transform.rotation"></a>3. <em>transform.rotation</em></h2><p>//将欧拉旋转角转换为四元素旋转角<br>Quaternion rotation= Quaternion.Euler(new Vector3(x, y,z))；<br>Transform.rotation=rotation;<br> new Vector(x,y,z)为游戏物体最终旋转到的目标角度，x.y,z的值分别都是以0为基准,假设游戏物体的初始角度为(x1,y1,z1),则游戏物体从(x1,y1,z1)旋转到(x,y,z),，同时也以世界坐标系为参考，而不是以父级游戏物体的坐标系为准。<br>举个例子：<br>    假如游戏物体A,B,都没有父游戏物体,B初始旋转角度为(0,0,45),A的初始旋转角度为(0,0,45)，编写脚本并把它挂载到B上，脚本编写如下：</p>
+<pre><code>public class Test2 : MonoBehaviour {
+private float agent;
+void Start () {
+    agent = 0f;
+}
+void Update () {
+    agent += Time.deltaTime*50;
+    transform.rotation = Quaternion.Euler(new Vector3(0f,agent,45f));
+}
+}
+</code></pre><p>这时，在程序还在跑着的时候，把B拽到A下，作为A的子游戏物体，这时，你猜，B的旋转角度是如何变化？<br>如果是以父级游戏物体的坐标系为准为准的话，那么B的旋转角度为(0,agent,45f)<br>但是，事实证明，B的旋转角度不仅仅是y轴的值变，连x轴、z轴的值都在变<br><a href="https://img-blog.csdnimg.cn/20190303185148596.gif" target="_blank" rel="noopener">https://img-blog.csdnimg.cn/20190303185148596.gif</a><br>结论：通过<br>Quaternion rotation= Quaternion.Euler(new Vector3(x, y,z))；<br>Transform.rotation=rotation;<br>设置的角度是绝对角度(类似于绝对路径)</p>
+<h2 id="4-transform-localRotation"><a href="#4-transform-localRotation" class="headerlink" title="4. transform.localRotation"></a>4. transform.localRotation</h2><p>类似于localEulerAngles，不再叙述</p>
+<h2 id="5-transform-Rotate-参数"><a href="#5-transform-Rotate-参数" class="headerlink" title="5. transform.Rotate(参数)"></a>5. transform.Rotate(参数)</h2><p>transform.Rotate(x,y,z)：以自身坐标系为参考，而不是世界坐标系，分别以x度y度z度绕X轴、Y轴、Z轴匀速旋转<br>transform.Rotate(轴，Space.Self):以自身坐标系为参考<br>Transform.Rotate(轴，Space.World):以世界坐标系为参考</p>
 
             </div>
             <hr>
@@ -523,7 +546,7 @@
                     </span>
                     <a href="https://jinchidong.github.io" class="b-link-green">金驰东</a>
                     <i class="fa fa-angle-right fa-lg fa-fw text-color"></i>
-                    <a href="/2019/03/19/网易云音乐真实链接获取/" class="b-link-green">网易云音乐真实链接获取</a>
+                    <a href="/2019/03/18/旋转的方式 - 副本/" class="b-link-green">unity的5种旋转方式</a>
                 </p>
             </div>
         </div>
@@ -545,7 +568,7 @@
         repo: '',
         owner: '',
         admin: null,
-        id: '2019-03-19T11-54-00',
+        id: '2019-03-18T20-45-00',
         distractionFreeMode: false  // Facebook-like distraction free mode
     });
 
@@ -568,60 +591,7 @@
         
         <div class="article col s12 m6" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fa fa-dot-circle-o"></i>&nbsp;本篇
-            </div>
-            <div class="card">
-                <a href="/2019/03/19/网易云音乐真实链接获取/">
-                    <div class="card-image">
-                        
-                        
-                        <img src="/medias/featureimages/1.jpg" class="responsive-img" alt="网易云音乐真实链接获取">
-                        
-                        <span class="card-title">网易云音乐真实链接获取</span>
-                    </div>
-                </a>
-                <div class="card-content article-content">
-                    <div class="summary">网易云音乐真实链接获取
-
-网易云现在有很多歌曲都要付费了，当喜欢某首歌想要下载的时候，却往往要开会员或者2元购买歌曲，但我们可以通过获取歌曲的真实链接然后通过迅雷等第三方软件下载就OK了
-
-
-
-首先打开歌曲，然后点分享，随后点击复制链接，但</div>
-                    <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="fa fa-clock-o fa-fw icon-date"></i>2019-03-19
-                            </span>
-                        <span class="publish-author">
-                            
-                            <i class="fa fa-bookmark fa-fw icon-category"></i>
-                            
-                            <a href="/categories/小技巧/" class="post-category" target="_blank">
-                                    小技巧
-                                </a>
-                            
-                            
-                        </span>
-                    </div>
-                </div>
-
-                
-                <div class="card-action article-tags">
-                    
-                    <a href="/tags/网易云/" target="_blank">
-                        <span class="chip bg-color">网易云</span>
-                    </a>
-                    
-                </div>
-                
-            </div>
-        </div>
-        
-        
-        <div class="article col s12 m6" data-aos="fade-up">
-            <div class="article-badge right-badge text-color">
-                下一篇&nbsp;<i class="fa fa-chevron-right"></i>
-            </div>
+                <i class="fa fa-chevron-left"></i>&nbsp;上一篇</div>
             <div class="card">
                 <a href="/2019/03/18/旋转的方式/">
                     <div class="card-image">
@@ -635,9 +605,9 @@
                 <div class="card-content article-content">
                     <div class="summary">unity五种旋转方式1. transform.localEulerAngles使用localEulerAngles进行旋转的时候，我们要使用transform.localEulerAngles = new Vector3(x, y,z);</div>
                     <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="fa fa-clock-o fa-fw icon-date"></i>2019-03-18
-                            </span>
+                        <span class="publish-date">
+                            <i class="fa fa-clock-o fa-fw icon-date"></i>2019-03-18
+                        </span>
                         <span class="publish-author">
                             
                             <i class="fa fa-bookmark fa-fw icon-category"></i>
@@ -655,6 +625,54 @@
                     
                     <a href="/tags/易混淆点/" target="_blank">
                         <span class="chip bg-color">易混淆点</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge right-badge text-color">
+                下一篇&nbsp;<i class="fa fa-chevron-right"></i>
+            </div>
+            <div class="card">
+                <a href="/2019/03/17/基于消息机制的unity框架/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/13.jpg" class="responsive-img" alt="UNITY框架">
+                        
+                        <span class="card-title">UNITY框架</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary">基于消息机制的unity框架代码结构
+定义StartPanel(开始界面)，LoginPanel(登录界面)，RegisterPanel(注册界面)
+Framework文件夹:包含了框架所包含的工具类。UI文件夹：项目的界面操作文件。
+vo</div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="fa fa-clock-o fa-fw icon-date"></i>2019-03-17
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fa fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/UNITY/" class="post-category" target="_blank">
+                                    UNITY
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/难点/" target="_blank">
+                        <span class="chip bg-color">难点</span>
                     </a>
                     
                 </div>
