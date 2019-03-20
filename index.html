@@ -292,6 +292,37 @@ $('.bg-cover').css('background-image', 'url(/medias/banner/' + new Date().getDay
                     
 
                     
+                        
+
+<link rel="stylesheet" href="/libs/aplayer/APlayer.min.css">
+<div class="music-player">
+    
+    <div class="row">
+        <div class="col l8 offset-l2 m10 offset-m1 s12">
+            <div id="aplayer" class="music"></div>
+        </div>
+    </div>
+</div>
+
+<script src="/libs/aplayer/APlayer.min.js"></script>
+<script>
+$(function () {
+    new APlayer({
+        container: document.getElementById('aplayer'),
+        fixed: 'false' === 'true',
+        autoplay: 'true' === 'true',
+        theme: '#42b983',
+        loop: 'all',
+        order: 'list',
+        preload: 'auto',
+        volume: Number('0.7'),
+        listFolded: 'false' === 'true',
+        listMaxHeight: '',
+        audio: JSON.parse('[{"name":"我曾","artist":"隔壁老樊","url":"wozuiaideren.mp3","cover":"https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1553017285814&di=ac4169dac0dbbe95211fe7405b1efb3b&imgtype=0&src=http%3A%2F%2Fn.sinaimg.cn%2Ftranslate%2F750%2Fw375h375%2F20180410%2F2Bpi-fyzeyqa1401736.jpg"},{"name":"我最爱的人","artist":"洪川","url":"wozuiaideren.mp3","cover":"https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1552977343757&di=baedd0c029607062c1d9c4c5d5a7d38c&imgtype=0&src=http%3A%2F%2Fpic.rmb.bdstatic.com%2Fc93c02efd7ad125bdd2bcf138977bac5.jpeg"},{"name":"如约","artist":"栗先达","url":"https://music.163.com/song/media/outer/url?id=546588939.mp3","cover":"https://p3fx.kgimg.com/stdmusic/20180324/20180324120045623106.jpg"},{"name":"七友","artist":"梁汉文","url":"https://music.163.com/song/media/outer/url?id=118261.mp3","cover":"https://p3fx.kgimg.com/stdmusic/20160309/20160309171148131060.jpg"},{"name":"梦中的婚礼","artist":"理查德·克莱德曼","url":"https://fs.w.kugou.com/201903171621/37f8f22d59bdc77f1d7a581456bb17b4/G073/M04/1F/01/KZQEAFgCHL6ALhP-ACyN4hcVAyw737.mp3","cover":"https://imgessl.kugou.com/uploadpic/softhead/400/20130531/20130531162457903.jpg"},{"name":"不仅仅是喜欢","artist":"虎二","url":"https://fs.w.kugou.com/201903171718/3fd0e3c4c3b0e29152bec1757a045236/G128/M03/0D/0F/YJQEAFr6SRyADoo5ADYRQ1cgXx4084.mp3","cover":"https://p3fx.kgimg.com/stdmusic/20181031/20181031192444800536.jpg"}]')
+    });
+});
+</script>
+                    
 
                     
                         <link rel="stylesheet" href="/libs/dplayer/DPlayer.min.css">
