@@ -4,11 +4,8 @@
 
 <head><meta name="generator" content="Hexo 3.8.0">
     <meta charset="utf-8">
-    <meta name="keywords" content="UNITY框架, 金驰东">
-    <meta name="description" content="基于消息机制的unity框架代码结构
-定义StartPanel(开始界面)，LoginPanel(登录界面)，RegisterPanel(注册界面)
-Framework文件夹:包含了框架所包含的工具类。UI文件夹：项目的界面操作文件。
-vo">
+    <meta name="keywords" content="游戏的分类, 金驰东">
+    <meta name="description" content="游戏的分类1:MOBA=Multiplayer online battle arena：多人在线战术竞技游戏现在最火爆的端游《英雄联盟》就属于这类型游戏，玩家一般被分为两队在战斗中一般需要购买装备，两队在游戏地图中互相PK，每个玩家都通过一">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -16,7 +13,7 @@ vo">
     <meta name="format-detection" content="telephone=no">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <title>UNITY框架 | 金驰东</title>
+    <title>游戏的分类 | 金驰东</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/font-awesome.min.css">
@@ -218,13 +215,13 @@ vo">
 
 
 
-<div class="bg-cover post-cover" style="background-image: url('/medias/featureimages/13.jpg')">
+<div class="bg-cover post-cover" style="background-image: url('/medias/featureimages/18.jpg')">
     <div class="container">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
                     <div class="description center-align post-title">
-                        UNITY框架
+                        游戏的分类
                     </div>
                 </div>
             </div>
@@ -316,8 +313,8 @@ vo">
                     
                     <div class="article-tag">
                         
-                            <a href="/tags/难点/" target="_blank">
-                                <span class="chip bg-color">难点</span>
+                            <a href="/tags/分类/" target="_blank">
+                                <span class="chip bg-color">分类</span>
                             </a>
                         
                     </div>
@@ -328,8 +325,8 @@ vo">
                     <div class="post-cate">
                         <i class="fa fa-bookmark fa-fw icon-category"></i>
                         
-                            <a href="/categories/UNITY/" class="post-category" target="_blank">
-                                UNITY
+                            <a href="/categories/游戏/" class="post-category" target="_blank">
+                                游戏
                             </a>
                         
                     </div>
@@ -340,21 +337,21 @@ vo">
             <div class="post-info">
                 <div class="post-date info-break-policy">
                     <i class="fa fa-calendar-minus-o fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2019-03-17
+                    2019-04-04
                 </div>
 
                 
                     
                     <div class="info-break-policy">
                         <i class="fa fa-file-word-o fa-fw"></i>文章字数:&nbsp;&nbsp;
-                        1.4k
+                        779
                     </div>
                     
 
                     
                     <div class="info-break-policy">
                         <i class="fa fa-clock-o fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                        6 分
+                        2 分
                     </div>
                     
                 
@@ -370,236 +367,17 @@ vo">
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h1 id="基于消息机制的unity框架"><a href="#基于消息机制的unity框架" class="headerlink" title="基于消息机制的unity框架"></a>基于消息机制的unity框架</h1><p>代码结构</p>
-<p>定义StartPanel(开始界面)，LoginPanel(登录界面)，RegisterPanel(注册界面)</p>
-<p>Framework文件夹:包含了框架所包含的工具类。UI文件夹：项目的界面操作文件。</p>
-<pre><code>void Awake() {
-        //注册绑定事件。
-        Bind(UIEvent.BEGIN_PANEL_ACTIVE);
-
-    }
-</code></pre><p>首先LoginPanel:先注册绑定“UIEvent.BEGIN_PANEL_ACTIVE”显示登录界面，</p>
-<pre><code>/// &lt;summary&gt;
-    /// 自身关心的消息集合
-    /// &lt;/summary&gt;
-    private List&lt;int&gt; list = new List&lt;int&gt;();
-
-    /// &lt;summary&gt;
-    /// 绑定一个或多个消息
-    /// &lt;/summary&gt;
-    /// &lt;param name=&quot;eventCodes&quot;&gt;Event codes.&lt;/param&gt;
-    /// params int [] eventCodes :可以接收多个参数。
-    protected void Bind(params int[] eventCodes)
-    {
-        list.AddRange(eventCodes);
-        //List.ToArray(); 将集合元素复制到新数组中。
-        UIManager.Instance.Add(list.ToArray(), this);
-    }
-</code></pre><p>Uibase调用Bind方法绑定一个或者多个消息（一个界面代码模块可以绑定多个事件），将事件ID，添加到消息集合中。在上传给Uimanager的Add方法。</p>
-<pre><code>/// &lt;summary&gt;
-/// 添加事件
-/// &lt;/summary&gt;
-/// &lt;param name=&quot;eventCode&quot;&gt;Event code.&lt;/param&gt;
-/// &lt;param name=&quot;mono&quot;&gt;Mono.&lt;/param&gt;
-public void Add(int eventCode, MonoBase mono)
-{
-    List&lt;MonoBase&gt; list = null;
-
-    //之前没有注册过
-    if (!dict.ContainsKey(eventCode))
-    {
-        list = new List&lt;MonoBase&gt;();
-        list.Add(mono);
-        dict.Add(eventCode, list);
-        return;
-    }
-
-    //之前注册过
-    list = dict[eventCode];
-    list.Add(mono);
-}
-
-/// &lt;summary&gt;
-/// 添加多个事件
-///     一个脚本关心多个事件
-/// &lt;/summary&gt;
-/// &lt;param name=&quot;eventCode&quot;&gt;Event code.&lt;/param&gt;
-public void Add(int[] eventCodes, MonoBase mono)
-{
-    for (int i = 0; i &lt; eventCodes.Length; i++)
-    {
-        Add(eventCodes[i], mono);
-    }
-}
-</code></pre><p>Add方法依次对该脚本所关注的所有事件进行注册（一个脚本模块可以关注多个事件），</p>
-<p>接受响应</p>
-<pre><code>public class StartPanel : UIBase {
-
-    private Button beginBtn;
-    private Button registerBtn;
-    // Use this for initialization
-    void Start () {
-        beginBtn = transform.Find(&quot;beginBtn&quot;).GetComponent&lt;Button&gt;();
-        registerBtn = transform.Find(&quot;registerBtn&quot;).GetComponent&lt;Button&gt;();
-
-        //添加按钮点击的监听事件。
-        beginBtn.onClick.AddListener(beginClick);
-        registerBtn.onClick.AddListener(registerClick);
-    }
-
-    private void beginClick() {
-        //向上层发送消息，派遣启动显示游戏开始界面penel
-        Dispatch(AreaCode.UI, UIEvent.BEGIN_PANEL_ACTIVE, true);
-
-    }
-
-    private void registerClick() {
-
-        Dispatch(AreaCode.UI,UIEvent.REGISTER_PANEL_ACTIVE,true);
-    }
-    public override void OnDestroy()
-    {
-        base.OnDestroy();
-        beginBtn.onClick.RemoveAllListeners();
-        registerBtn.onClick.RemoveAllListeners();
-    }
-}
-</code></pre><p>beginClick函数接收登录按钮的点击事件，调用UIBase的Dispatch方法，向UIbase发送”显示登录界面” 的消息，</p>
-<pre><code>public class UIBase : MonoBase
-{
-    /// &lt;summary&gt;
-    /// 自身关心的消息集合
-    /// &lt;/summary&gt;
-    private List&lt;int&gt; list = new List&lt;int&gt;();
-
-    /// &lt;summary&gt;
-    /// 绑定一个或多个消息
-    /// &lt;/summary&gt;
-    /// &lt;param name=&quot;eventCodes&quot;&gt;Event codes.&lt;/param&gt;
-    /// params int [] eventCodes :可以接收多个参数。
-    protected void Bind(params int[] eventCodes)
-    {
-        list.AddRange(eventCodes);
-        //List.ToArray(); 将集合元素复制到新数组中。
-        UIManager.Instance.Add(list.ToArray(), this);
-    }
-
-    /// &lt;summary&gt;
-    /// 解除绑定的消息
-    /// &lt;/summary&gt;
-    protected void UnBind()
-    {
-        UIManager.Instance.Remove(list.ToArray(), this);
-        list.Clear();
-    }
-
-    /// &lt;summary&gt;
-    /// 自动移除绑定的消息
-    /// &lt;/summary&gt;
-    public  virtual void OnDestroy()
-    {
-        if (list != null)
-            UnBind();
-    }
-
-    /// &lt;summary&gt;
-    /// 发消息
-    /// &lt;/summary&gt;
-    /// &lt;param name=&quot;areaCode&quot;&gt;Area code.&lt;/param&gt;
-    /// &lt;param name=&quot;eventCode&quot;&gt;Event code.&lt;/param&gt;
-    /// &lt;param name=&quot;message&quot;&gt;Message.&lt;/param&gt;
-    public void Dispatch(int areaCode, int eventCode, object message)
-    {
-        //uibase传递给MsgCenter消息处理中心
-        MsgCenter.Instance.Dispatch(areaCode, eventCode, message);
-    }
-
-    /// &lt;summary&gt;
-    /// 设置面板显示和隐藏。
-    /// &lt;/summary&gt;
-    /// &lt;param name=&quot;active&quot;&gt;&lt;/param&gt;
-    protected void setPanelActive(bool active)
-    {
-        gameObject.SetActive(active);
-    }
-
-}
-</code></pre><p>UIbase的Dispatch方法，在把“显示登录界面”的请求，传递给MsgCenter（消息处理中心）</p>
-<pre><code>/// &lt;summary&gt;
-   /// 发送消息 系统里面所有的发消息 都通过这个方法来转发
-   ///   怎么转发？根据不同的模块 来发给 不同的模块 
-   ///     怎么识别模块呢？通过 areaCode
-   /// 
-   ///     第二个参数：事件码 作用？用来区分 做什么事情的
-   ///         比如说 第一个参数 识别到是角色模块 但是角色模块有很多功能 比如 移动 攻击 死亡 逃跑...
-   ///             就需要第二个参数 来识别 具体是做哪一个动作
-   ///     Dispatch调遣，分派。
-   /// &lt;/summary&gt;
-   public void Dispatch(int areaCode, int eventCode, object message)
-   {
-       switch (areaCode)
-       {
-           case AreaCode.AUDIO:
-               AudioManager.Instance.Execute(eventCode, message);
-               break;
-
-           case AreaCode.CHARACTER:
-               CharacterManager.Instance.Execute(eventCode, message);
-               break;
-
-           case AreaCode.GAME:
-               break;
-
-           case AreaCode.UI:
-               UIManager.Instance.Execute(eventCode, message);
-               break;
-
-           default:
-               break;
-       }
-   }
-</code></pre><p>MsgCenter（消息处理中心）：调用Dispatch方法，发送给ManagerBase的Execute方法。</p>
-<pre><code>/// &lt;summary&gt;
-  /// 处理自身的消息
-  /// &lt;/summary&gt;
-  /// &lt;param name=&quot;eventCode&quot;&gt;Event code.&lt;/param&gt;
-  /// &lt;param name=&quot;message&quot;&gt;Message.&lt;/param&gt;
-  public override void Execute(int eventCode, object message)
-  {
-      if (!dict.ContainsKey(eventCode))
-      {
-          Debug.LogWarning(&quot;没有注册 ： &quot; + eventCode);
-          return;
-      }
-
-      //一旦注册过这个消息 给所有的脚本 发过去
-      List&lt;MonoBase&gt; list = dict[eventCode];
-      for (int i = 0; i &lt; list.Count; i++)
-      {
-          list[i].Execute(eventCode, message);
-      }
-  }
-</code></pre><p>ManagerBase的Execute方法，分配下发给各个界面，让界面处理自身的消息。（注意：一个消息可以被多个脚本所响应）</p>
-<pre><code>void Awake() {
-        //注册绑定事件。
-        Bind(UIEvent.BEGIN_PANEL_ACTIVE);
-
-    }
-
-    public override void Execute(int eventCode, object message)
-    {
-        switch(eventCode){
-            case UIEvent.BEGIN_PANEL_ACTIVE:
-                setPanelActive((bool)message);
-                break;
-            default:
-                break;
-        }
-        base.Execute(eventCode, message);
-    }
-</code></pre><p>因为LoginPanel:里面绑定注册了“UIEvent.BEGIN_PANEL_ACTIVE” 事件，则会执行Execute方法，进行响应。显示登录界面。</p>
-<p> 到这来，我们就完成从注册事件，到响应事件的功能。</p>
-<p>要注意我们这个基于消息机制的UI框架，一个事件可以被多个界面代码模块所响应，同时一个界面代码模块，也可以注册绑定多个事件。（要先注册绑定，才会有响应）<br>优点：降低了各模块之间的耦合度并减少代码对组件的依赖，可以自动的添加和删除组件，方便用AssetBundle进行加载资源，不会出现代码，组件丢失。</p>
+                <h1 id="游戏的分类"><a href="#游戏的分类" class="headerlink" title="游戏的分类"></a>游戏的分类</h1><h2 id="1-MOBA-Multiplayer-online-battle-arena：多人在线战术竞技游戏"><a href="#1-MOBA-Multiplayer-online-battle-arena：多人在线战术竞技游戏" class="headerlink" title="1:MOBA=Multiplayer online battle arena：多人在线战术竞技游戏"></a>1:<em>MOBA=Multiplayer online battle arena：多人在线战术竞技游戏</em></h2><p>现在最火爆的端游《英雄联盟》就属于这类型游戏，玩家一般被分为两队在战斗中一般需要购买装备，两队在游戏地图中互相PK，每个玩家都通过一个RTS(即时战略)风格的界面控制所选的角色。这类型游戏一般联动和节奏做的好，所以游戏里个人实力差距不会太远，可以用技术弥补。</p>
+<h2 id="2-RPG-Role-playing-Game∶角色扮演游戏"><a href="#2-RPG-Role-playing-Game∶角色扮演游戏" class="headerlink" title="2:RPG= Role-playing Game∶角色扮演游戏"></a>2:<em>RPG= Role-playing Game∶角色扮演游戏</em></h2><p>顾名思义，就是由玩家扮演游戏中的一个角色，围绕着故事情节的游戏，和冒险游戏(下面会讲到)不同的是RPG游戏更强调的是剧情发展与个人体验，如大家熟悉的《仙剑》、《剑侠》等。</p>
+<h2 id="3：ACT-Action-Game∶动作游戏"><a href="#3：ACT-Action-Game∶动作游戏" class="headerlink" title="3：ACT= Action Game∶动作游戏"></a>3：<em>ACT= Action Game∶动作游戏</em></h2><p>动作游戏大家应该最熟悉不过了，玩家控制游戏人物过关的游戏，不追求故事情节，如我们小时候玩的《超级玛丽》、《魂斗罗》等，这些类型的游戏操作简单易上手，非常受欢迎。</p>
+<h2 id="4：AVG-Adventure-Game-∶冒险游戏"><a href="#4：AVG-Adventure-Game-∶冒险游戏" class="headerlink" title="4：AVG= Adventure Game ∶冒险游戏"></a>4：<em>AVG= Adventure Game ∶冒险游戏</em></h2><p>由玩家控制游戏中的人物进行虚拟冒险，也是角色扮演(RPG)的一种，与RPG不同的是，AVG的特色是故事情节是以完成一个任务，而且在游戏过程中刻有着各样的谜题(所以玩游戏就跟看电影一样)，如《生化危机》等系列。</p>
+<h2 id="5：RTS-Real-Time-Strategy-Game：即时战略游戏"><a href="#5：RTS-Real-Time-Strategy-Game：即时战略游戏" class="headerlink" title="5：RTS=Real-Time Strategy Game：即时战略游戏"></a>5：<em>RTS=Real-Time Strategy Game：即时战略游戏</em></h2><p>也是属于策略游戏SLG的一个分支，由于分支相当火爆，所以慢慢发展成了一个单独的类型，知名度很高。如游戏《帝国时代》。《帝国时代》系列作品相当成功，此系列的游戏在获得了玩家们评论一致的高评分，帝国时代可以说是对之后的即时战略游戏影响非常大。</p>
+<h2 id="6-FGT-Fighting-Game∶格斗游戏"><a href="#6-FGT-Fighting-Game∶格斗游戏" class="headerlink" title="6:FGT= Fighting Game∶格斗游戏"></a>6:<em>FGT= Fighting Game∶格斗游戏</em></h2><p>这个相信大家也是非常熟悉，就是我们平常大部分的类似PK游戏，由玩家操纵各种角色与电脑或另一玩家所控制的角色进行格斗的游戏，如《拳皇》系列等。</p>
+<h2 id="7-FPS-First-Personal-Shooting-Game：第一人称视角射击游戏"><a href="#7-FPS-First-Personal-Shooting-Game：第一人称视角射击游戏" class="headerlink" title="7:FPS=First Personal Shooting Game：第一人称视角射击游戏"></a>7:<em>FPS=First Personal Shooting Game：第一人称视角射击游戏</em></h2><p>第一人称视角射击游戏是最火爆的游戏类型之一，如现在的游戏《使命召唤》，《穿越火线》等游戏。</p>
+<h2 id="8-PZL-Puzzle-Game∶益智类游戏"><a href="#8-PZL-Puzzle-Game∶益智类游戏" class="headerlink" title="8:PZL= Puzzle Game∶益智类游戏"></a>8:<em>PZL= Puzzle Game∶益智类游戏</em></h2><p>这个更不多说，几乎是地球人都玩过的游戏《俄罗斯方块》。</p>
+<h2 id="9-RCG-Racing-Game∶竞速游戏"><a href="#9-RCG-Racing-Game∶竞速游戏" class="headerlink" title="9:RCG= Racing Game∶竞速游戏"></a>9:<em>RCG= Racing Game∶竞速游戏</em></h2><p>在电脑上模拟各类赛车和运动的游戏，如《飞车》、《QQ飞车》等。</p>
+<h2 id="10-SPT-Sports-Game∶体育类游戏"><a href="#10-SPT-Sports-Game∶体育类游戏" class="headerlink" title="10:SPT= Sports Game∶体育类游戏"></a>10:<em>SPT= Sports Game∶体育类游戏</em></h2><p>模拟竞技体育运动的游戏足球，是各个喜欢运动喜欢的类型游戏，如现在很多人在玩的《实况足球》系列等。</p>
+<h2 id="11-WAG-Wap-Game∶手机游戏"><a href="#11-WAG-Wap-Game∶手机游戏" class="headerlink" title="11:WAG=Wap Game∶手机游戏"></a>11:<em>WAG=Wap Game∶手机游戏</em></h2><p>就是手机上的游戏，有一部手机就可以随时随地可以玩游戏。</p>
 
             </div>
             <hr>
@@ -740,7 +518,7 @@ public void Add(int[] eventCodes, MonoBase mono)
                     </span>
                     <a href="https://jinchidong.github.io" class="b-link-green">金驰东</a>
                     <i class="fa fa-angle-right fa-lg fa-fw text-color"></i>
-                    <a href="/2019/03/17/基于消息机制的unity框架/" class="b-link-green">UNITY框架</a>
+                    <a href="/2019/04/04/游戏的分类/" class="b-link-green">游戏的分类</a>
                 </p>
             </div>
         </div>
@@ -762,7 +540,7 @@ public void Add(int[] eventCodes, MonoBase mono)
         repo: '',
         owner: '',
         admin: null,
-        id: '2019-03-17T20-20-00',
+        id: '2019-04-04T21-04-00',
         distractionFreeMode: false  // Facebook-like distraction free mode
     });
 
@@ -785,77 +563,30 @@ public void Add(int[] eventCodes, MonoBase mono)
         
         <div class="article col s12 m6" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fa fa-chevron-left"></i>&nbsp;上一篇</div>
+                <i class="fa fa-dot-circle-o"></i>&nbsp;本篇
+            </div>
             <div class="card">
-                <a href="/2019/03/18/旋转的方式/">
+                <a href="/2019/04/04/游戏的分类/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/10.jpg" class="responsive-img" alt="unity的5种旋转方式">
+                        <img src="/medias/featureimages/18.jpg" class="responsive-img" alt="游戏的分类">
                         
-                        <span class="card-title">unity的5种旋转方式</span>
+                        <span class="card-title">游戏的分类</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
-                    <div class="summary">unity五种旋转方式1. transform.localEulerAngles使用localEulerAngles进行旋转的时候，我们要使用transform.localEulerAngles = new Vector3(x, y,z);</div>
-                    <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="fa fa-clock-o fa-fw icon-date"></i>2019-03-18
-                        </span>
-                        <span class="publish-author">
-                            
-                            <i class="fa fa-bookmark fa-fw icon-category"></i>
-                            
-                            <a href="/categories/UNITY/" class="post-category" target="_blank">
-                                    UNITY
-                                </a>
-                            
-                            
-                        </span>
-                    </div>
-                </div>
-                
-                <div class="card-action article-tags">
-                    
-                    <a href="/tags/易混淆点/" target="_blank">
-                        <span class="chip bg-color">易混淆点</span>
-                    </a>
-                    
-                </div>
-                
-            </div>
-        </div>
-        
-        
-        <div class="article col s12 m6" data-aos="fade-up">
-            <div class="article-badge right-badge text-color">
-                本篇&nbsp;<i class="fa fa-dot-circle-o"></i>
-            </div>
-            <div class="card">
-                <a href="/2019/03/17/基于消息机制的unity框架/">
-                    <div class="card-image">
-                        
-                        
-                        <img src="/medias/featureimages/13.jpg" class="responsive-img" alt="UNITY框架">
-                        
-                        <span class="card-title">UNITY框架</span>
-                    </div>
-                </a>
-                <div class="card-content article-content">
-                    <div class="summary">基于消息机制的unity框架代码结构
-定义StartPanel(开始界面)，LoginPanel(登录界面)，RegisterPanel(注册界面)
-Framework文件夹:包含了框架所包含的工具类。UI文件夹：项目的界面操作文件。
-vo</div>
+                    <div class="summary">游戏的分类1:MOBA=Multiplayer online battle arena：多人在线战术竞技游戏现在最火爆的端游《英雄联盟》就属于这类型游戏，玩家一般被分为两队在战斗中一般需要购买装备，两队在游戏地图中互相PK，每个玩家都通过一</div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="fa fa-clock-o fa-fw icon-date"></i>2019-03-17
+                                <i class="fa fa-clock-o fa-fw icon-date"></i>2019-04-04
                             </span>
                         <span class="publish-author">
                             
                             <i class="fa fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/UNITY/" class="post-category" target="_blank">
-                                    UNITY
+                            <a href="/categories/游戏/" class="post-category" target="_blank">
+                                    游戏
                                 </a>
                             
                             
@@ -866,8 +597,59 @@ vo</div>
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/难点/" target="_blank">
-                        <span class="chip bg-color">难点</span>
+                    <a href="/tags/分类/" target="_blank">
+                        <span class="chip bg-color">分类</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge right-badge text-color">
+                下一篇&nbsp;<i class="fa fa-chevron-right"></i>
+            </div>
+            <div class="card">
+                <a href="/2019/03/19/网易云音乐真实链接获取/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/1.jpg" class="responsive-img" alt="网易云音乐真实链接获取">
+                        
+                        <span class="card-title">网易云音乐真实链接获取</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary">网易云音乐真实链接获取
+
+网易云现在有很多歌曲都要付费了，当喜欢某首歌想要下载的时候，却往往要开会员或者2元购买歌曲，但我们可以通过获取歌曲的真实链接然后通过迅雷等第三方软件下载就OK了
+
+
+
+首先打开歌曲，然后点分享，随后点击复制链接，但</div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="fa fa-clock-o fa-fw icon-date"></i>2019-03-19
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fa fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/小技巧/" class="post-category" target="_blank">
+                                    小技巧
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/网易云/" target="_blank">
+                        <span class="chip bg-color">网易云</span>
                     </a>
                     
                 </div>
